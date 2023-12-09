@@ -31,17 +31,17 @@ else {
 /** create properties table if not exist
  */
 $sql = "CREATE TABLE IF NOT EXISTS property (
-    id INT NOT NULL UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    prop_description VARCHAR,
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    detail VARCHAR(255),
     sqft INT(6),
-    acreage DECIMAL,
+    acreage DECIMAL(5,2),
     rooms INT(6),
-    baths DECIMAL,
+    baths DECIMAL(5,2),
     bedrms INT(6),
     yr INT(6),
     yard BOOLEAN,
-    parking INT,
-    price DECIMAL,
+    parking INT(6),
+    price DECIMAL(5,2)
     )";
 if ($conn->query($sql) === TRUE) {
     echo "property table created successfully";

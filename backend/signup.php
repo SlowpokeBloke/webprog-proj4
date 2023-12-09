@@ -25,6 +25,7 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(255) NOT NULL,
     passwrd VARCHAR(255) NOT NULL
     )";
+$conn->query($sql);
 
 //Users data, replace tests with post variables once html page created
 $firstname = "test2";//$_POST["firstname"];

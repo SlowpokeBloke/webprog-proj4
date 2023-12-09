@@ -51,13 +51,12 @@ else {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS addr (
-    id INT NOT NULL,
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     prop_id INT NOT NULL,
-    street VARCHAR NOT NULL.
-    city VARCHAR NOT NULL,
-    state VARCHAR NOT NULL,
+    street VARCHAR(255) NOT NULL.
+    city VARCHAR(255) NOT NULL,
+    state VARCHAR(255) NOT NULL,
     zip INT NOT NULL,
-    PRIMARY KEY (id),
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {
@@ -68,11 +67,10 @@ else {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS img (
-    id INT NOT NULL,
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     prop_id INT NOT NULL,
     img_name VARCHAR NOT NULL,
     img_type VARCHAR NOT NULL,
-    PRIMARY KEY (id),
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {

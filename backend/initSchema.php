@@ -52,11 +52,11 @@ else {
 
 $sql = "CREATE TABLE IF NOT EXISTS addr (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    prop_id INT NOT NULL,
+    prop_id INT(6) NOT NULL,
     street VARCHAR(255) NOT NULL.
     city VARCHAR(255) NOT NULL,
     state VARCHAR(255) NOT NULL,
-    zip INT NOT NULL,
+    zip INT(6) NOT NULL,
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {

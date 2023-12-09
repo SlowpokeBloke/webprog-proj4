@@ -57,6 +57,7 @@ $sql = "CREATE TABLE IF NOT EXISTS addr (
     city VARCHAR NOT NULL,
     state VARCHAR NOT NULL,
     zip INT NOT NULL,
+    PRIMARY KEY (id),
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {
@@ -71,6 +72,7 @@ $sql = "CREATE TABLE IF NOT EXISTS img (
     prop_id INT NOT NULL,
     img_name VARCHAR NOT NULL,
     img_type VARCHAR NOT NULL,
+    PRIMARY KEY (id),
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {

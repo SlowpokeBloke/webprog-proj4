@@ -17,8 +17,8 @@ if($conn->connect_error) {
 } 
 
 //SWAP OUT FOR COMMENTS WHEN HTML IS MADE
-$username = "test3";//$_POST["username"];
-$passwd = "password";//$_POST["password"];
+$username = $_POST["username"];
+$passwd = $_POST["password"];
 
 //Searching for username
 $sql = "SELECT * FROM users WHERE username='$username'";
@@ -34,6 +34,7 @@ if ($query !== false && $query->num_rows > 0) {
         //Enter page to go to when made
         echo "Correct Password";
         echo "Login Successful";
+        $_SESSION["user_id"]=$username;
     } else{
         echo "Incorrect Password";
     }

@@ -28,11 +28,11 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
 $conn->query($sql);
 
 //Users data, replace tests with post variables once html page created
-$firstname = "test2";//$_POST["firstname"];
-$lastname = "test2";//$_POST["lastname"];
-$email = "test2";//$_POST["eamil"];
-$username = "test2";//$_POST["username"];
-$passwd = "test2";//$_POST["password"];
+$firstname = $_POST["first-name"];
+$lastname = $_POST["last-name"];
+$email = $_POST["email"];
+$username = $_POST["username"];
+$passwd = $_POST["password"];
 $hash = password_hash($passwd, PASSWORD_DEFAULT);
 
 // Inserting to the table

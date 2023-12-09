@@ -22,7 +22,7 @@ $sql = "CREATE TABLE IF NOT EXISTS user (
     passwrd VARCHAR(255) NOT NULL
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "user table created successfully";
+    echo "user table created successfully\n";
 }
 else {
     echo "Error creating user table: " . $conn->error;
@@ -44,7 +44,7 @@ $sql = "CREATE TABLE IF NOT EXISTS property (
     price DECIMAL(5,2)
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "property table created successfully";
+    echo "property table created successfully\n";
 }
 else {
     echo "Error creating prop table: " . $conn->error;
@@ -60,10 +60,10 @@ $sql = "CREATE TABLE IF NOT EXISTS addr (
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "address table created successfully";
+    echo "address table created successfully\n";
 }
 else {
-    echo "Error creating addr table: " . $conn->error;
+    echo "Error creating addr table: " + $conn->error;
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS img (
@@ -74,10 +74,10 @@ $sql = "CREATE TABLE IF NOT EXISTS img (
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "img table created successfully";
+    echo "img table created successfully\n";
 }
 else {
-    echo "Error creating img table: " . $conn->error;
+    echo "Error creating img table: " + $conn->error;
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS owner (
@@ -96,7 +96,7 @@ if ($conn->query($sql) === TRUE) {
     echo "owner table created successfully";
 }
 else {
-    echo "Error creating owner table: " . $conn->error;
+    echo "Error creating owner table: " + $conn->error;
 }
 
 $conn->close();

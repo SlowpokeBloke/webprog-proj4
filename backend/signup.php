@@ -33,10 +33,11 @@ $lastname = "test2";//$_POST["lastname"];
 $email = "test2";//$_POST["eamil"];
 $username = "test2";//$_POST["username"];
 $passwd = "test2";//$_POST["password"];
+$hash = password_hash($passwd, PASSWORD_DEFAULT);
 
 // Inserting to the table
 $sql = "INSERT INTO users (firstname, lastname, email, username, passwrd)
-VALUES ('$firstname', '$lastname', '$email', '$username', '$passwd')";
+VALUES ('$firstname', '$lastname', '$email', '$username', '$hash')";
 
 //Confirmation message
 if ($conn->query($sql) === TRUE) {

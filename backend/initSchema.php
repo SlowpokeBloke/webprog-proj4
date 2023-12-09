@@ -55,7 +55,7 @@ $sql = "CREATE TABLE IF NOT EXISTS addr (
     prop_id INT NOT NULL,
     street VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,
-    state VARCHAR(255) NOT NULL,
+    st VARCHAR(255) NOT NULL,
     zip INT(6) NOT NULL,
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";

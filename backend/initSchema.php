@@ -22,10 +22,10 @@ $sql = "CREATE TABLE IF NOT EXISTS user (
     passwrd VARCHAR(255) NOT NULL
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "Tables created successfully";
+    echo "user table created successfully";
 }
 else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating user table: " . $conn->error;
 }
 
 /** create properties table if not exist
@@ -38,16 +38,16 @@ $sql = "CREATE TABLE IF NOT EXISTS property (
     rooms INT(6),
     baths DECIMAL,
     bedrms INT(6),
-    year INT(6),
+    yr INT(6),
     yard BOOLEAN,
     parking INT,
     price DECIMAL,
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "Tables created successfully";
+    echo "property table created successfully";
 }
 else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating prop table: " . $conn->error;
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS addr (
@@ -60,10 +60,10 @@ $sql = "CREATE TABLE IF NOT EXISTS addr (
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "Tables created successfully";
+    echo "address table created successfully";
 }
 else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating addr table: " . $conn->error;
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS img (
@@ -74,10 +74,10 @@ $sql = "CREATE TABLE IF NOT EXISTS img (
     FOREIGN KEY (prop_id) REFERENCES property(id)
     )";
 if ($conn->query($sql) === TRUE) {
-    echo "Tables created successfully";
+    echo "img table created successfully";
 }
 else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating img table: " . $conn->error;
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS owner (
@@ -93,10 +93,10 @@ $sql = "CREATE TABLE IF NOT EXISTS owner (
 
 //Confirmation message
 if ($conn->query($sql) === TRUE) {
-    echo "Tables created successfully";
+    echo "owner table created successfully";
 }
 else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating owner table: " . $conn->error;
 }
 
 $conn->close();

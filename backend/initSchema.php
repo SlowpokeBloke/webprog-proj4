@@ -70,9 +70,10 @@ else {
 $sql = "CREATE TABLE IF NOT EXISTS img (
     id INT(6) UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
     prop_id INT(6) UNSIGNED,
-    img_name VARCHAR NOT NULL,
-    img_type VARCHAR NOT NULL,
+    img_name VARCHAR(255) NOT NULL,
+    img_type VARCHAR(255) NOT NULL,
     FOREIGN KEY (prop_id) REFERENCES property(id)
+        ON DELETE SET NULL
     )";
 if ($conn->query($sql) === TRUE) {
     echo "img table created successfully\n";

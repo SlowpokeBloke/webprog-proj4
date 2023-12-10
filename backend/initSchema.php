@@ -1,10 +1,9 @@
 <?php
-/**db credentials
-$host = "localhost";
-$user = "mcoca1";
-$pass = "mcoca1";
-$dbname = "mcoca1";
-*/
+// $host = "localhost";
+// $user = "mcoca1";
+// $pass = "mcoca1";
+// $dbname = "mcoca1";
+
 
 //Create connection
 $conn = new mysqli($host, $user, $pass, $dbname);

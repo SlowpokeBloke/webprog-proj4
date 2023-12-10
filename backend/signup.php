@@ -32,4 +32,6 @@ echo("Account created successfully.\n");
 
 $stmt->close();
 $conn->close();
+header("Location: ../frontend/login.html");
+exit();
 ?>

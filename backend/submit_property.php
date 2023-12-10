@@ -15,19 +15,18 @@ if (mysqli_connect_errno()) {
 $stmt = $conn->prepare("INSERT INTO property (detail, sqft, acreage, rooms, baths, bedrms, yr, yard, parking, price)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("sidiibid", $detail, $sqft, $baths, $bedrooms, $year, $yard, $parking, $price);
-// $stmt = $conn->prepare("INSERT INTO property (detail, sqft, acreage, rooms, baths, bedrms, yr, yard, parking, price)
-// VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-// $stmt->bind_param("sididiibid", $detail, $sqft, $acreage, $rooms, $baths, $bedrooms, $year, $yard, $parking, $price);
 
 $detail = $_POST["facilities"];
 $sqft = $_POST["floor-plan"];
-//$acreage = $_POST[""];
-//$rooms = $_POST[""];
 $baths = $_POST["baths"];
 $bedrooms = $_POST["bedrooms"];
 $year = $_POST["age"];
 $yard = $_POST["garden"];
-$parking = $_POST["parking"];
+if($_POST["parking"] == "Yes"){
+    $parking = true;
+} else {
+    $parking = false;
+}
 $price = $_POST["property-value"];
 $stmt->execute();
 

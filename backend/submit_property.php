@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "dosgood1";
-$pass = "dosgood1";
-$dbname = "dosgood1";
+// $host = "localhost";
+// $user = "dosgood1";
+// $pass = "dosgood1";
+// $dbname = "dosgood1";
  
 // If upload button is clicked ...
 if (isset($_POST['submit'])) {

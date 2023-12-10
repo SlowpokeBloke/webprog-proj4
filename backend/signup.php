@@ -16,16 +16,10 @@ if($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-//Create table if not done so
-$sql = "CREATE TABLE IF NOT EXISTS users (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstname VARCHAR(255) NOT NULL,
-    lastname VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    username VARCHAR(255) NOT NULL,
-    passwrd VARCHAR(255) NOT NULL
-    )";
-$conn->query($sql);
+//prepare statement
+$stmt = $conn->prepare("INSERT INTO user (firstname, lastname, email, username, passwrd)
+VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssi", $firstname, $lastname, $email, $username, $hash);
 
 //Users data, replace tests with post variables once html page created
 $firstname = $_POST["first-name"];
@@ -34,17 +28,10 @@ $email = $_POST["email"];
 $username = $_POST["username"];
 $passwd = $_POST["password"];
 $hash = password_hash($passwd, PASSWORD_DEFAULT);
+$stmt->execute();
 
-// Inserting to the table
-$sql = "INSERT INTO users (firstname, lastname, email, username, passwrd)
-VALUES ('$firstname', '$lastname', '$email', '$username', '$hash')";
+echo("Account created successfully.\n");
 
-//Confirmation message
-if ($conn->query($sql) === TRUE) {
-    echo "Data inserted into table successfully";
-}
-else {
-    echo "Error creating table: " . $conn->error;
-}
+$stmt->close();
 $conn->close();
 ?>

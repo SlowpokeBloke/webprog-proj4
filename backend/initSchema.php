@@ -86,8 +86,10 @@ else {
 $sql = "CREATE TABLE IF NOT EXISTS owner (
     user_id INT(6) UNSIGNED NOT NULL,
     prop_id INT(6) UNSIGNED NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (user_id) REFERENCES user(id)
+        ON DELETE SET NULL,
     FOREIGN KEY (prop_id) REFERENCES property(id)
+        ON DELETE SET NULL
 )";
 if ($conn->query($sql) === TRUE) {
     echo "owner table created successfully\n";

@@ -21,7 +21,7 @@ $username = $_POST["username"];
 $passwd = $_POST["password"];
 
 //Searching for username
-$sql = "SELECT * FROM users WHERE username='$username'";
+$sql = "SELECT * FROM user WHERE username='$username'";
 $query = $conn->query($sql);
 
 if ($query !== false && $query->num_rows > 0) {

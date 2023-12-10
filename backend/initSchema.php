@@ -1,8 +1,8 @@
 <?php
-// $host = "localhost";
-// $user = "mcoca1";
-// $pass = "mcoca1";
-// $dbname = "mcoca1";
+$host = "localhost";
+$user = "mcoca1";
+$pass = "mcoca1";
+$dbname = "mcoca1";
 
 
 //Create connection
@@ -41,7 +41,7 @@ $sql = "CREATE TABLE IF NOT EXISTS property (
     bedrms INT(6),
     yr INT(6),
     yard BOOLEAN,
-    parking INT(6),
+    parking BOOLEAN,
     price DECIMAL(5,2)
     )";
 if ($conn->query($sql) === TRUE) {

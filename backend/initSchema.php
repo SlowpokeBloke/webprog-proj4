@@ -31,7 +31,7 @@ else {
 /** create properties table if not exist
  */
 $sql = "CREATE TABLE IF NOT EXISTS property (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id INT(6) UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
     detail VARCHAR(255),
     sqft INT(6),
     acreage DECIMAL(5,2),
@@ -51,13 +51,14 @@ else {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS addr (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    prop_id INT NOT NULL,
+    id INT(6) UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    prop_id INT(6) UNSIGNED,
     street VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,
     st VARCHAR(255) NOT NULL,
     zip INT(6) NOT NULL,
-    FOREIGN KEY (prop_id) REFERENCES property(id)
+    FOREIGN KEY (prop_id) REFERENCES property (id)
+        ON DELETE SET NULL
     )";
 if ($conn->query($sql) === TRUE) {
     echo "address table created successfully\n";
@@ -67,8 +68,8 @@ else {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS img (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    prop_id INT NOT NULL,
+    id INT(6) UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    prop_id INT(6) UNSIGNED,
     img_name VARCHAR NOT NULL,
     img_type VARCHAR NOT NULL,
     FOREIGN KEY (prop_id) REFERENCES property(id)
@@ -81,19 +82,13 @@ else {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS owner (
-    user_id INT NOT NULL,
-    prop_id INT NOT NULL,
+    user_id INT(6) UNSIGNED NOT NULL,
+    prop_id INT(6) UNSIGNED NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (prop_id) REFERENCES property(id)
 )";
-
-// Inserting to the table
-// $sql = "INSERT INTO property (firstname)
-// VALUES ('$prop_address', '$prop_description')";
-
-//Confirmation message
 if ($conn->query($sql) === TRUE) {
-    echo "owner table created successfully";
+    echo "owner table created successfully\n";
 }
 else {
     echo "Error creating owner table: " + $conn->error;

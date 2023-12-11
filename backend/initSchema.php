@@ -1,8 +1,8 @@
 <?php
-// $host = "localhost";
-// $user = "mcoca1";
-// $pass = "mcoca1";
-// $dbname = "mcoca1";
+$host = "localhost";
+$user = "mcoca1";
+$pass = "mcoca1";
+$dbname = "mcoca1";
 
 
 //Create connection
@@ -15,11 +15,10 @@ if($conn->connect_error) {
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS user (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    username VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL PRIMARY KEY,
     passwrd VARCHAR(255) NOT NULL
     )";
 if ($conn->query($sql) === TRUE) {
@@ -33,6 +32,7 @@ else {
  */
 $sql = "CREATE TABLE IF NOT EXISTS property (
     id INT(6) UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    owner VARCHAR(255) NOT NULL,
     detail VARCHAR(255),
     sqft INT(6),
     acreage DECIMAL(5,2),
@@ -41,8 +41,9 @@ $sql = "CREATE TABLE IF NOT EXISTS property (
     bedrms INT(6),
     yr INT(6),
     yard BOOLEAN,
-    parking INT(6),
-    price DECIMAL(5,2)
+    parking BOOLEAN,
+    price DECIMAL(5,2),
+    FOREIGN KEY (owner) REFERENCES user(username)
     )";
 if ($conn->query($sql) === TRUE) {
     echo "property table created successfully\n";
@@ -83,20 +84,19 @@ else {
     echo "Error creating img table: " + $conn->error;
 }
 
-$sql = "CREATE TABLE IF NOT EXISTS owner (
-    user_id INT(6) UNSIGNED NOT NULL,
-    prop_id INT(6) UNSIGNED NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-        ON DELETE SET NULL,
-    FOREIGN KEY (prop_id) REFERENCES property(id)
-        ON DELETE SET NULL
-)";
-if ($conn->query($sql) === TRUE) {
-    echo "owner table created successfully\n";
-}
-else {
-    echo "Error creating owner table: " + $conn->error;
-}
+// $sql = "CREATE TABLE IF NOT EXISTS owner (
+//     username VARCHAR(255) NOT NULL,
+//     prop_id INT(6) UNSIGNED NOT NULL,
+//     FOREIGN KEY (username) REFERENCES user(username),
+//     FOREIGN KEY (prop_id) REFERENCES property(id),
+//     PRIMARY KEY (username, prop_id)
+// )";
+// if ($conn->query($sql) === TRUE) {
+//     echo "owner table created successfully\n";
+// }
+// else {
+//     echo "Error creating owner table: " + $conn->error;
+// }
 
 $conn->close();
 ?>

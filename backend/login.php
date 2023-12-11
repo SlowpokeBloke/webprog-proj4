@@ -32,6 +32,7 @@ if ($query !== false && $query->num_rows > 0) {
         echo "Correct Password";
         echo "Login Successful";
         $_SESSION["user_id"]=$username;
+        header("Location: ../frontend/seller.html");
     } else{
         echo "Incorrect Password";
     }

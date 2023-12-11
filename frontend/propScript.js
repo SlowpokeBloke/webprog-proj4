@@ -93,12 +93,8 @@ function closePropertyModal() {
 }
 //Simulate fetching property data from the server (replace with actual fetch logic)
 function fetchPropertiesFromServer() {
-    // Fetch properties from the server using a fetch API or another method
-    // properties = [ ... ]; // Update properties with fetched data
-    // Then, call generatePropertyCards to display the cards
     generatePropertyCards();
 
 }
 
-//Initialize property cards by fetching data from the server
 fetchPropertiesFromServer();

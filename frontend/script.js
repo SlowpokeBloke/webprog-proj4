@@ -117,6 +117,13 @@ const properties = [
         price: "$100,000",
         image: "property1.jpg",
         description: "This is property 1.",
+
+        id: 2,
+        title: "Property 2",
+        location: "Location 1",
+        price: "$100,000",
+        image: "property1.jpg",
+        description: "This is property 1.",
     }
 ];
 

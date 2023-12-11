@@ -12,9 +12,9 @@ if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();
   }
-$stmt = $conn->prepare("INSERT INTO property (detail, sqft, acreage, rooms, baths, bedrms, yr, yard, parking, price)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sidiibid", $detail, $sqft, $baths, $bedrooms, $year, $yard, $parking, $price);
+$stmt = $conn->prepare("INSERT INTO property (owner, detail, sqft, acreage, rooms, baths, bedrms, yr, yard, parking, price)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssidiibid", $_SESSION["user_id"],$detail, $sqft, $baths, $bedrooms, $year, $yard, $parking, $price);
 
 $detail = $_POST["facilities"];
 $sqft = $_POST["floor-plan"];
